@@ -8,7 +8,8 @@
     include 'verificaLogin.php';
     include "conexao.php";
     include "./bibliotecas.php"; 
-    include_once './navbar.php'; 
+    include_once './navbar.php';
+    include './modalpopUp.php';
 
 if (isset($_GET['pagina'])) { 
     $pagina = $_GET['pagina'];
@@ -18,7 +19,7 @@ if (isset($_GET['pagina'])) {
 $sql = "select * from cliente order by nome";
 $dados = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
       
-$total_reg = "6"; 
+$total_reg = "5"; 
 
 if (!$pagina) {
 $pc = "1";
@@ -49,9 +50,9 @@ $tp = $tr / $total_reg;
                             <th>Curso</th>
                             <th>Disciplina 1</th>
                             <th>Disciplina 2</th>
-                            <th>Situação</th>
                             <th>Analisado por:</th>
                             <th>Data</th>
+                            <th>Situação</th>
                        </tr>  
                 <?php
                  while ($cliente = mysqli_fetch_assoc($limite)) {
@@ -70,20 +71,32 @@ $tp = $tr / $total_reg;
                     } 
                     else{
                         $dataBR = NULL;    
-                    }   
-                            echo "<tr>
+                        } 
+                    if($validacao == 'Negado'){
+                        $botaocolor = 'btn-danger';
+                        $motivo = 'motivonegacao.php'; 
+                        $buttonchange = 'Visualizar';
+                        
+                    }
+                    else {
+                         $botaocolor = 'btn-primary';
+                         $motivo = 'formAutorizacao.php';
+                         $buttonchange = 'Modificar';
+                         
+                         }                   
+                             echo "<tr>
                                  <td>$grr</td>
                                  <td>$nome</td>
                                  <td>$curso</td>
                                  <td>$discp1</td>
                                  <td>$discp2</td>  
-                                 <td>$validacao</td>
                                  <td>$func</td>
-                                 <td>$dataBR</td>     
+                                 <td>$dataBR</td>  
+                                 <td>$validacao</td>
                              <td>
                             </div> 
                             <td>
-                                 <a href='formAutorizacao.php?id=$id' class='btn btn-primary'>Modificar</a> 
+                                 <a href='$motivo?id=$id' class='btn $botaocolor'>$buttonchange</a> 
                             </td>
                                     </tr>";
                  }         

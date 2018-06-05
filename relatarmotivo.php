@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Autorização</title>
+        <title>Relatar Motivos</title>
          <?php include './bibliotecas.php'; ?>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
@@ -21,31 +21,25 @@ $cliente = mysqli_fetch_assoc($dados);
             <br><br>
             <div class="panel panel-default">
                 <div class="panel panel-heading">
-                    <strong><h4>Autorizar Disciplinas de:  <?php echo $cliente['nome'];?> </h4></strong>
+                    <strong><h4>Motivo da negação do pedido de:  <?php echo $cliente['nome'];?> </h4></strong>
                 </div>
                 <div class="panel panel-body">
                     <form action="gravaselecao.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>"/>
-                        <div class="form-group">
-                            <label for="curso">Curso</label>
-                            <input class="form-control" type="text" name="curso" disabled="disabled" value="<?php echo $cliente['curso']; ?>"/>
-                        </div>           
-                        <div class="form-group">
-                            <label for="discp1">Disciplina 1</label>
-                            <input class="form-control" type="text" name="discp1" disabled="disabled"value="<?php echo $cliente['discp1']; ?>"/>
+                        
+                           <div class="form-group">
+                            <label for="motivo">Insira o motivo da recusa (max 250 caracteres)</label>
+                            <input class="form-control" type="text" name="motivo"  required="true"/>
                         </div>
-                        <div class="form-group">
-                            <label for="discp2">Disciplina 2</label>
-                            <input class="form-control" type="text" name="discp2" disabled="disabled"value="<?php echo $cliente['discp2']; ?>"/> 
-                        </div>
+                        
                                                       
                     <div class="panel panel-footer">
                         <div class="text-right">
                             <input class="btn btn-default" type="button" value="Voltar" onClick="history.go(-1)"> 
                             <a href='menuprincipal.php' class="btn btn-default">Menu Principal</a>
-                            <input type="submit" name ="validacao" value="Aceitar" class="btn btn-success"/>
-                            <?php echo "<a href='relatarmotivo.php?id=$id' class='btn btn-danger'>Recusar</a>"?>
-                         </div>
+                            <input type="submit" name="validacao" value="Confirmar Recusa" class="btn btn-primary"/>
+                                                      
+                        </div>
                      </form> 	
                 </div>
             </div>
