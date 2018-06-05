@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Jun-2018 às 02:13
+-- Generation Time: 05-Jun-2018 às 22:27
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -32,35 +32,36 @@ CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) DEFAULT NULL,
   `grr` int(8) DEFAULT NULL,
-  `reg` text NOT NULL,
+  `reg` varchar(10) NOT NULL,
   `curso` varchar(30) NOT NULL,
   `discp1` varchar(30) NOT NULL,
   `discp2` varchar(30) NOT NULL,
   `validacao` varchar(7) NOT NULL,
   `func` varchar(30) NOT NULL,
-  `data` datetime NOT NULL
+  `data` datetime NOT NULL,
+  `motivo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `grr`, `reg`, `curso`, `discp1`, `discp2`, `validacao`, `func`, `data`) VALUES
-(1, 'Félix Miélli Venerando', 19700001, 'Aluno', 'Agronomia', 'Topografia', 'Divulgação Científica', '', '', '0000-00-00 00:00:00'),
-(2, 'Eduardo Roberto Stinghen', 19700012, 'Aluno', 'Licenciatura Ciências Exatas', 'Divulgação Científica', 'Matemática I', '', '', '0000-00-00 00:00:00'),
-(3, 'Emerson Leão', 19700022, 'Aluno', 'Medicina Veterinária', 'Citologia e Histologia', 'Anatomia Veterinária I', '', '', '0000-00-00 00:00:00'),
-(4, 'Carlos Alberto Torres', 19700004, 'Aluno', 'Licenciatura Computação', 'Ética e Educação', 'Computadores e Sociedade', 'Negado', 'Airan', '2018-06-03 00:00:00'),
-(5, 'José Maria Rodrigues Alves', 19700021, 'Aluno', 'Ciências Biológicas', 'Genética', 'Parasitologia', '', '', '0000-00-00 00:00:00'),
-(6, 'Marco Antônio Feliciano', 19700006, 'Aluno', 'Biotecnologia', 'Genética', 'Bioquímica Geral', '', '', '0000-00-00 00:00:00'),
-(7, 'Everaldo Marques da Silva', 19700016, 'Aluno', 'Medicina Veterinária', 'Anestesiologia Veterinária', 'Parasitologia', '', '', '0000-00-00 00:00:00'),
-(8, 'Hércules Brito Ruas', 19700002, 'Aluno', 'Engenharia de Aquicultura', 'Tecnologia do Pescado', 'Divulgação Científica', '', '', '0000-00-00 00:00:00'),
-(9, 'Wilson Piazza', 19700003, 'Aluno', 'Licenciatura Computação', 'Introdução à Lógica', 'Ética e Educação', '', '', '0000-00-00 00:00:00'),
-(10, 'Gérson de Oliveira Nunes', 19700008, 'Aluno', 'Licenciatura Ciências Exatas', 'Geometria Analítica', 'Química Orgânica', '', '', '0000-00-00 00:00:00'),
-(11, 'Roberto Rivellino', 19700011, 'Aluno', 'Licenciatura Computação', 'Matemática I', 'Didática da Computação', '', '', '0000-00-00 00:00:00'),
-(12, 'Eduardo Gonçalves de Andrade', 19700007, 'Aluno', 'Licenciatura Computação', 'Introdução à Lógica', 'Computadores e Sociedade', 'Aceito', 'Helio', '2018-06-03 00:00:00'),
-(13, 'Edson Arantes do Nascimento', 19700010, 'Aluno', 'Licenciatura Computação', 'Divulgação Científica', 'Matemática I', 'Aceito', 'Airan', '2018-06-03 00:00:00'),
-(14, 'Jair Ventura Filho', 19700007, 'Aluno', 'Medicina Veterinária', 'Ecologia de Campo', 'Anestesiologia Veterinária', '', '', '0000-00-00 00:00:00'),
-(15, 'Mário Jorge lobo Zagallo', 19700000, 'Servidor', 'Licenciatura Computação', 'Ética e Educação', 'Inteligência Artificial', '', '', '0000-00-00 00:00:00');
+INSERT INTO `cliente` (`id`, `nome`, `grr`, `reg`, `curso`, `discp1`, `discp2`, `validacao`, `func`, `data`, `motivo`) VALUES
+(1, 'Félix Miélli Venerando', 19700001, 'Aluno', 'Agronomia', 'Topografia', 'Divulgação Científica', 'negado', 'Airan', '2018-06-04 23:31:56', ''),
+(2, 'Eduardo Roberto Stinghen', 19700012, 'Aluno', 'Licenciatura Ciências Exatas', 'Divulgação Científica', 'Matemática I', 'Negado', 'Helio', '2018-06-05 14:34:52', 'Não segue as especificações do Técnico. Cansa fácil e corre pouco durante o jogo!'),
+(3, 'Emerson Leão', 19700022, 'Aluno', 'Medicina Veterinária', 'Citologia e Histologia', 'Anatomia Veterinária I', '', '', '0000-00-00 00:00:00', ''),
+(4, 'Carlos Alberto Torres', 19700004, 'Aluno', 'Licenciatura Computação', 'Ética e Educação', 'Computadores e Sociedade', 'Aceito', 'Airan', '2018-06-05 14:52:47', ''),
+(5, 'José Maria Rodrigues Alves', 19700021, 'Aluno', 'Ciências Biológicas', 'Genética', 'Parasitologia', '', '', '0000-00-00 00:00:00', ''),
+(6, 'Marco Antônio Feliciano', 19700006, 'Aluno', 'Biotecnologia', 'Genética', 'Bioquímica Geral', '', '', '0000-00-00 00:00:00', ''),
+(7, 'Everaldo Marques da Silva', 19700016, 'Aluno', 'Medicina Veterinária', 'Anestesiologia Veterinária', 'Parasitologia', '', '', '0000-00-00 00:00:00', ''),
+(8, 'Hércules Brito Ruas', 19700002, 'Aluno', 'Engenharia de Aquicultura', 'Tecnologia do Pescado', 'Divulgação Científica', '', '', '0000-00-00 00:00:00', ''),
+(9, 'Wilson Piazza', 19700003, 'Aluno', 'Licenciatura Computação', 'Introdução à Lógica', 'Ética e Educação', '', '', '0000-00-00 00:00:00', ''),
+(10, 'Gérson de Oliveira Nunes', 19700008, 'Aluno', 'Licenciatura Ciências Exatas', 'Geometria Analítica', 'Química Orgânica', '', '', '0000-00-00 00:00:00', ''),
+(11, 'Roberto Rivellino', 19700011, 'Aluno', 'Licenciatura Computação', 'Matemática I', 'Didática da Computação', '', '', '0000-00-00 00:00:00', ''),
+(12, 'Eduardo Gonçalves de Andrade', 19700007, 'Aluno', 'Licenciatura Computação', 'Introdução à Lógica', 'Computadores e Sociedade', 'Aceito', 'Helio', '2018-06-03 00:00:00', ''),
+(13, 'Edson Arantes do Nascimento', 19700010, 'Aluno', 'Licenciatura Computação', 'Divulgação Científica', 'Matemática I', 'Negado', 'Airan', '2018-06-05 14:32:45', 'Muito estrelinha durante o jogo. Não fui com a cara dele, mesmo sendo craque!'),
+(14, 'Jair Ventura Filho', 19700007, 'Aluno', 'Medicina Veterinária', 'Ecologia de Campo', 'Anestesiologia Veterinária', '', '', '0000-00-00 00:00:00', ''),
+(15, 'Mário Jorge lobo Zagallo', 19700000, 'Servidor', 'Licenciatura Computação', 'Ética e Educação', 'Inteligência Artificial', '', '', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
